@@ -1,6 +1,6 @@
 import pygame
 
-from src.components.text.TextBox import TextBox
+from finn.components.text.TextBox import TextBox
 
 
 class TextBoxList(object):

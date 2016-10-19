@@ -1,11 +1,11 @@
 import pygame
 
-import src.Color
-from src.components.Box import Box
+import finn.Color as Color
+from finn.components.Box import Box
 
 
 class Window(object):
-    def __init__(self, position, size, name=None, border_color=src.Color.white):
+    def __init__(self, position, size, name=None, border_color=Color.white):
         self.name = name
         self.position = position
         self.canvas = pygame.Surface(size=size)
@@ -34,7 +34,7 @@ class Window(object):
                     component.update(key=key, mouse=mouse, offset=offset)
 
     def draw(self, screen):
-        self.canvas.fill(src.Color.black)
+        self.canvas.fill(Color.black)
         for component in self.components:
             component.draw(self.canvas)
         for sprite in self.sprites:
