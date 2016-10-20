@@ -1,5 +1,6 @@
 from math import pow, sqrt, tan, pi
 import pygame
+import finn.Color as Color
 
 
 class Ellipse(object):
@@ -7,6 +8,8 @@ class Ellipse(object):
         self.position = position
         self.x_radius = x_radius
         self.y_radius = y_radius
+        self.color = Color.white
+        self.outline = 2
 
     def get_point(self, angle):
         if angle == 0:
@@ -29,9 +32,7 @@ class Ellipse(object):
             y = -y
         return int(x)+self.position[0], int(y)+self.position[1]
 
-    def draw(self, screen, color=None, outline=2):
+    def draw(self, screen):
         box = pygame.Rect(self.position[0] - self.x_radius, self.position[1] - self.y_radius,
                           self.x_radius * 2, self.y_radius * 2)
-        if color is None:
-            color = (0, 0, 0)
-        pygame.draw.ellipse(screen, color, box, outline)
+        pygame.draw.ellipse(screen, self.color, box, self.outline)

@@ -24,7 +24,11 @@ class State(object):
                 border_color = properties["border_color"]
             else:
                 border_color = None
-            self.windows[name] = Window(position=position, size=size, name=name, border_color=border_color)
+            self.windows[name] = Window(position=position,
+                                        size=size,
+                                        name=name,
+                                        border_color=border_color)
+            return self.windows[name]
 
     def draw_windows(self, screen):
         for name, window in self.windows.iteritems():
