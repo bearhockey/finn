@@ -4,7 +4,7 @@ import pygame
 class Box(object):
     def __init__(self, rect, box_color=None, border_color=None, highlight_color=None, active_color=None, border=2,
                  highlight_box=True, name=None, image=None):
-        self.rect = rect
+        self.rect = pygame.Rect(rect)
         self.box_color = box_color
         self.border_color = {
             'NORMAL': border_color,
@@ -21,9 +21,13 @@ class Box(object):
     def update(self, key, mouse, offset=(0, 0)):
         return self.check_click(mouse=mouse, offset=offset)
 
+    def move_rect(self, x, y):
+        rect = (x, y, self.rect.width, self.rect.height)
+        self.rect = pygame.Rect(rect)
+
     def check_mouse_inside(self, mouse, offset=(0, 0)):
         pos = (pygame.mouse.get_pos()[0] - offset[0], pygame.mouse.get_pos()[1] - offset[1])
-        return self.rect.collidepoint(pos)
+        return self.rect.collidepoint(pos[0], pos[1])
 
     def check_click(self, mouse, offset=(0, 0)):
         if self.check_mouse_inside(mouse=mouse, offset=offset):
