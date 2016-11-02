@@ -15,7 +15,10 @@ class Board(object):
             font_path = pygame.font.match_font(pygame.font.get_default_font())
         self.big_font = pygame.font.Font(font_path, 48)
         self.font = pygame.font.Font(font_path, 24)
-        self.small_font = pygame.font.Font(font_path, 12)
+        self.small_font = pygame.font.Font(font_path, 14)
+        self.fonts = {"BIG": self.big_font,
+                      "NORMAL": self.font,
+                      "SMALL": self.small_font}
 
         mouse_button = {"LEFT": 1,
                         "MIDDLE": 2,
@@ -34,6 +37,9 @@ class Board(object):
     def add_game_state(self, name, state):
         if name not in self.game_states:
             self.game_states[name] = state
+
+    def get_game_state(self):
+        return self.game_states[self.game_state]
 
     def set_game_state(self, name):
         if name not in self.game_states:

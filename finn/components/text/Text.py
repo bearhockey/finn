@@ -1,8 +1,17 @@
 import pygame
 
 
+def draw_text(screen, font, text, color, position, width=None, shadow=False, shadow_color=None):
+    if shadow:
+        if shadow_color is None:
+            shadow_color = (0, 0, 0)
+        shadow_position = (position[0]+2, position[1]+2)
+        draw_text_raw(screen, font, text, shadow_color, shadow_position, width)
+    draw_text_raw(screen, font, text, color, position, width)
+
+
 # stolen a little bit from http://pygame.org/wiki/TextWrap
-def draw_text(screen, font, text, color, position, width=None):
+def draw_text_raw(screen, font, text, color, position, width=None):
     text = str(text)
     if not width:
         width = font.size(text)[0]

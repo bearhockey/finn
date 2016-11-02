@@ -26,6 +26,9 @@ class Scene(object):
         self.update_components(key, mouse, offset)
 
     def draw(self, screen):
+        self.draw_all(screen)
+
+    def draw_all(self, screen):
         for component in self.components:
             component.draw(screen)
         for sprite in self.sprites:
