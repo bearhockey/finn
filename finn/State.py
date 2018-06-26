@@ -31,11 +31,11 @@ class State(object):
             return self.windows[name]
 
     def draw_windows(self, screen):
-        for name, window in self.windows.iteritems():
+        for name, window in self.windows.items():
             window.draw(screen)
 
     def update_windows(self, key, mouse):
-        for name, window in self.windows.iteritems():
+        for name, window in self.windows.items():
             window.update(key, mouse)
 
     def draw(self, screen):
